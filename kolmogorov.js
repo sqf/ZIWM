@@ -16,14 +16,17 @@ function getPatientsMatrix(filePath) {
 
 var patientsMatrix = getPatientsMatrix("mi.txt");
 
-function computeProbabilityDistribution(featureArray) {
-    var counts = featureArray.reduce(function(result, item) {
+function computeDistributionNumbers(featureArray) {
+    return featureArray.reduce(function(result, item) {
         result[item] || (result[item] = 0);
         result[item]++;
         return result;
     }, {});
-    return counts;
+}
+
+function computeDistributionProbability() {
+    
 }
 
 //console.log(getPatientsMatrix("mi.txt")[2][1]);
-console.log(computeProbabilityDistribution(patientsMatrix[0]));
+console.log(computeDistributionNumbers(patientsMatrix[0]));
