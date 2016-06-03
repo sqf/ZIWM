@@ -29,3 +29,16 @@ exports.computeProbabilityDistribution = function(distributionNumbers, numberOfP
     }
     return probabilityDistribution;
 }
+
+exports.mergeMatrix = function(array1, array2) {
+    var length1 = array1[0].length;
+    var length2 = array2[0].length;
+    var mergedArray = array1;
+
+    for(var i = 0; i < array2.length; i++) {
+        for(var j = 0; j < length2; j++) {
+            mergedArray[i][length1 + j] = array2[i][j];
+        }
+    }
+    return mergedArray;
+}
