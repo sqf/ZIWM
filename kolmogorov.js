@@ -24,9 +24,17 @@ function computeDistributionNumbers(featureArray) {
     }, {});
 }
 
-function computeDistributionProbability() {
-    
+var distributionNumbers = computeDistributionNumbers(patientsMatrix[0]);
+
+function computeProbabilityDistribution(distributionNumbers, numberOfPatients) {
+    var probabilityDistribution = {};
+    for (var feature in distributionNumbers) {
+        probabilityDistribution[feature] = distributionNumbers[feature] / numberOfPatients;
+    }
+    return probabilityDistribution;
 }
 
+var probabilityDistribution = computeProbabilityDistribution(distributionNumbers, patientsMatrix[0].length);
+console.log(probabilityDistribution);
 //console.log(getPatientsMatrix("mi.txt")[2][1]);
-console.log(computeDistributionNumbers(patientsMatrix[0]));
+//console.log(computeDistributionNumbers(patientsMatrix[1]));
