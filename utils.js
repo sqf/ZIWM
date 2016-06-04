@@ -42,9 +42,6 @@ exports.computeProbabilityDistributionForAllFeatures = function(distributionNumb
 exports.subtractProbabilityDistributionForAllFeatures = function(probabilityDistribution1, probabilityDistribution2) {
     return _.mapObject(probabilityDistribution1, function(val, key) {
         return _.mapObject(val, function(val2, key2) {
-            // console.log("val2: ", val2);
-            // console.log("probabilityDistribution2[key][key2]", probabilityDistribution2[key][key2]);
-            // console.log("subtr: val2 - probabilityDistribution2[key][key2]", val2 - probabilityDistribution2[key][key2]);
             return Math.abs(val2 - probabilityDistribution2[key][key2]);
         });
     });
