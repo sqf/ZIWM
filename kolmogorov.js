@@ -35,9 +35,13 @@ var bigMatrixProbabilityDistributionForAllFeatures =
 
 var probabilityBigMatrixMinusInneMatrix =
     utils.subtractProbabilityDistributionForAllFeatures(bigMatrixProbabilityDistributionForAllFeatures, inneMatrixProbabilityDistributionForAllFeatures);
-
-console.log("probabilityBigMatrixMinusInneMatrix :");
-console.log(probabilityBigMatrixMinusInneMatrix);
+var sumOfProbabilityBigMatrixMinusInneMatrix = utils.sumProbabilitiesInEachFeature(probabilityBigMatrixMinusInneMatrix);
+console.log("sumOfProbabilityBigMatrixMinusInneMatrix");
+console.log(sumOfProbabilityBigMatrixMinusInneMatrix);
+console.log("probabilityBigMatrixMinusInneMatrix[38] :");
+console.log(probabilityBigMatrixMinusInneMatrix[38][10]);
+console.log("probabilityBigMatrixMinusInneMatrix[39] :");
+console.log(probabilityBigMatrixMinusInneMatrix[39][0]);
 // console.log("inneMatrixProbabilityDistributionForAllFeatures: ");
 // console.log(inneMatrixProbabilityDistributionForAllFeatures);
 // console.log("bigMatrix[1].length: ", utils.getNumberOfPatients(bigMatrix));
