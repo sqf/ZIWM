@@ -33,12 +33,17 @@ var mi_npMatrixProbabilityDistributionForAllFeatures =
 var bigMatrixProbabilityDistributionForAllFeatures =
     utils.computeProbabilityDistributionForAllFeatures(bigMatrixDistributionNumbersForAllFeatures, utils.getNumberOfPatients(bigMatrix));
 
-console.log("inneMatrixProbabilityDistributionForAllFeatures: ");
-console.log(inneMatrixProbabilityDistributionForAllFeatures);
-console.log("bigMatrix[1].length: ", utils.getNumberOfPatients(bigMatrix));
-console.log("inneMatrix[1].length:", utils.getNumberOfPatients(inneMatrix));
-console.log("ang_prectMatrix[1].length: ", utils.getNumberOfPatients(ang_prectMatrix));
-console.log("miMatrix[1].length: ", utils.getNumberOfPatients(miMatrix));
-console.log("mi_npMatrix[1].length: ", utils.getNumberOfPatients(mi_npMatrix));
+var probabilityBigMatrixMinusInneMatrix =
+    utils.subtractProbabilityDistributionForAllFeatures(bigMatrixProbabilityDistributionForAllFeatures, inneMatrixProbabilityDistributionForAllFeatures);
+
+console.log("probabilityBigMatrixMinusInneMatrix :");
+console.log(probabilityBigMatrixMinusInneMatrix);
+// console.log("inneMatrixProbabilityDistributionForAllFeatures: ");
+// console.log(inneMatrixProbabilityDistributionForAllFeatures);
+// console.log("bigMatrix[1].length: ", utils.getNumberOfPatients(bigMatrix));
+// console.log("inneMatrix[1].length:", utils.getNumberOfPatients(inneMatrix));
+// console.log("ang_prectMatrix[1].length: ", utils.getNumberOfPatients(ang_prectMatrix));
+// console.log("miMatrix[1].length: ", utils.getNumberOfPatients(miMatrix));
+// console.log("mi_npMatrix[1].length: ", utils.getNumberOfPatients(mi_npMatrix));
 //console.log(getPatientsMatrix("mi.txt")[2][1]);
 //console.log(computeDistributionNumbers(patientsMatrix[1]));
