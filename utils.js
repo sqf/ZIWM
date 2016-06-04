@@ -1,6 +1,7 @@
 var fs = require("fs");
 var exports = module.exports = {};
 
+// Function getPatientsMatrix return two dimension array. First parameter is feature, second is patient.
 exports.getPatientsMatrix = function(filePath) {
     var data = fs.readFileSync(filePath).toString();
     data = data.split(/\r?\n/);
@@ -28,6 +29,10 @@ exports.computeProbabilityDistribution = function(distributionNumbers, numberOfP
         probabilityDistribution[feature] = distributionNumbers[feature] / numberOfPatients;
     }
     return probabilityDistribution;
+}
+
+exports.getNumberOfPatients = function(matrix) {
+    return matrix[0].length;
 }
 
 exports.mergeMatrix = function(array1, array2) {
