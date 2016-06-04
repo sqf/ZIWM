@@ -15,9 +15,15 @@ bigMatrix = utils.mergeMatrix(bigMatrix, mi_npMatrix);
 var bigMatrixdistributionNumbers = utils.computeDistributionNumbers(bigMatrix[0]);
 console.log("inneMatrix.length", inneMatrix.length);
 
-console.log("utils.computeDistributionNumbersForAllFeatures(inneMatrix)");
-//console.log(utils.computeDistributionNumbersForAllFeatures(inneMatrix));
+var inneMatrixDistributionNumbersForAllFeatures =  utils.computeDistributionNumbersForAllFeatures(inneMatrix)
+console.log("inneMatrixDistributionNumbersForAllFeatures");
+console.log(inneMatrixDistributionNumbersForAllFeatures.length);
 
+var inneMatrixProbabilityDistributionForAllFeatures =
+    utils.computeProbabilityDistributionForAllFeatures(inneMatrixDistributionNumbersForAllFeatures, utils.getNumberOfPatients(inneMatrix));
+
+console.log("inneMatrixProbabilityDistributionForAllFeatures");
+console.log(inneMatrixProbabilityDistributionForAllFeatures);
 var bigMatrixProbabilityDistribution = utils.computeProbabilityDistribution(bigMatrixdistributionNumbers, utils.getNumberOfPatients(bigMatrix));
 console.log("bigMatrix[1].length: ", utils.getNumberOfPatients(bigMatrix));
 console.log("inneMatrix[1].length:", utils.getNumberOfPatients(inneMatrix));
