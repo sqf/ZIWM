@@ -84,6 +84,25 @@ exports.getNumberOfPatients = function(matrix) {
     return matrix[0].length;
 }
 
+function computePartOfKolmogorovScore(probabilityBigMatrixMinusSecondMatrix, numberOfPatients) {
+    return probabilityBigMatrixMinusSecondMatrix.map(function (probability) {
+        return probability * numberOfPatients;
+    });
+}
+
+exports.sumArrays = function(array1, array2) {
+    var sum = [];
+    for(var i = 0; i < array1.length; i++) {
+        sum.push(array1[i] + array2[i]);
+    }
+    return sum;
+}
+
+exports.getNumberOfPatients = function(matrix) {
+    return matrix[0].length;
+}
+
+
 exports.mergeMatrix = function(array1, array2) {
     var length1 = array1[0].length;
     var length2 = array2[0].length;
@@ -99,3 +118,4 @@ exports.mergeMatrix = function(array1, array2) {
 
 exports.computeDistributionNumbers = computeDistributionNumbers;
 exports.computeProbabilityDistribution = computeProbabilityDistribution;
+exports.computePartOfKolmogorovScore = computePartOfKolmogorovScore;

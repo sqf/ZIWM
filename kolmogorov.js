@@ -10,9 +10,6 @@ bigMatrix = utils.mergeMatrix(bigMatrix, ang_prectMatrix);
 bigMatrix = utils.mergeMatrix(bigMatrix, miMatrix);
 bigMatrix = utils.mergeMatrix(bigMatrix, mi_npMatrix);
 
-var bigMatrixdistributionNumbers = utils.computeDistributionNumbers(bigMatrix[0]);
-console.log("inneMatrix.length", inneMatrix.length);
-
 var inneMatrixDistributionNumbersForAllFeatures =  utils.computeDistributionNumbersForAllFeatures(inneMatrix);
 var ang_prectMatrixDistributionNumbersForAllFeatures =  utils.computeDistributionNumbersForAllFeatures(ang_prectMatrix)
 var ang_prct_2MatrixDistributionNumbersForAllFeatures =  utils.computeDistributionNumbersForAllFeatures(ang_prct_2Matrix)
@@ -63,27 +60,17 @@ var sumOfProbabilityBigMatrixMinusAng_prct_2Matrix = utils.sumProbabilitiesInEac
 var sumOfProbabilityBigMatrixMinusMiMatrix = utils.sumProbabilitiesInEachFeature(probabilityBigMatrixMinusMiMatrix);
 var sumOfProbabilityBigMatrixMinusMi_npMatrix = utils.sumProbabilitiesInEachFeature(probabilityBigMatrixMinusMi_npMatrix);
 
-console.log("sumOfProbabilityBigMatrixMinusInneMatrix");
-console.log(sumOfProbabilityBigMatrixMinusInneMatrix);
-console.log("sumOfProbabilityBigMatrixMinusAng_prectMatrix");
-console.log(sumOfProbabilityBigMatrixMinusAng_prectMatrix);
-console.log("sumOfProbabilityBigMatrixMinusAng_prct_2Matrix");
-console.log(sumOfProbabilityBigMatrixMinusAng_prct_2Matrix);
-console.log("sumOfProbabilityBigMatrixMinusMiMatrix");
-console.log(sumOfProbabilityBigMatrixMinusMiMatrix);
-console.log("sumOfProbabilityBigMatrixMinusMi_npMatrix");
-console.log(sumOfProbabilityBigMatrixMinusMi_npMatrix);
+var innePartOfKolmogorovScore = utils.computePartOfKolmogorovScore(sumOfProbabilityBigMatrixMinusInneMatrix, probabilityOfInne);
+var ang_prectPartOfKolmogorovScore = utils.computePartOfKolmogorovScore(sumOfProbabilityBigMatrixMinusAng_prectMatrix, probabilityOfAng_prect);
+var ang_prct_2Matrix_prectPartOfKolmogorovScore = utils.computePartOfKolmogorovScore(sumOfProbabilityBigMatrixMinusAng_prct_2Matrix, probabilityOfAng_prct_2);
+var miMatrixPartOfKolmogorovScore = utils.computePartOfKolmogorovScore(sumOfProbabilityBigMatrixMinusMiMatrix, probabilityOfMi);
+var mi_npPartOfKolmogorovScore = utils.computePartOfKolmogorovScore(sumOfProbabilityBigMatrixMinusMi_npMatrix, probabilityOfMi_np);
 
-console.log("probabilityBigMatrixMinusInneMatrix[38] :");
-console.log(probabilityBigMatrixMinusInneMatrix[38][10]);
-console.log("probabilityBigMatrixMinusInneMatrix[39] :");
-console.log(probabilityBigMatrixMinusInneMatrix[39][0]);
-// console.log("inneMatrixProbabilityDistributionForAllFeatures: ");
-// console.log(inneMatrixProbabilityDistributionForAllFeatures);
-// console.log("bigMatrix[1].length: ", utils.getNumberOfPatients(bigMatrix));
-console.log("utils.getNumberOfPatients(ang_prectMatrix):", utils.getNumberOfPatients(ang_prectMatrix));
-// console.log("ang_prectMatrix[1].length: ", utils.getNumberOfPatients(ang_prectMatrix));
-// console.log("miMatrix[1].length: ", utils.getNumberOfPatients(miMatrix));
-// console.log("mi_npMatrix[1].length: ", utils.getNumberOfPatients(mi_npMatrix));
-//console.log(getPatientsMatrix("mi.txt")[2][1]);
-//console.log(computeDistributionNumbers(patientsMatrix[1]));
+var kolmogorovScoreList = JSON.parse(JSON.stringify(innePartOfKolmogorovScore));
+kolmogorovScoreList = utils.sumArrays(kolmogorovScoreList, ang_prectPartOfKolmogorovScore);
+kolmogorovScoreList = utils.sumArrays(kolmogorovScoreList, ang_prct_2Matrix_prectPartOfKolmogorovScore);
+kolmogorovScoreList = utils.sumArrays(kolmogorovScoreList, miMatrixPartOfKolmogorovScore);
+kolmogorovScoreList = utils.sumArrays(kolmogorovScoreList, mi_npPartOfKolmogorovScore);
+
+console.log("kolmogorovScoreList:")
+console.log(kolmogorovScoreList)
