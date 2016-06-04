@@ -16,7 +16,7 @@ var bigMatrixdistributionNumbers = utils.computeDistributionNumbers(bigMatrix[0]
 console.log("inneMatrix.length", inneMatrix.length);
 
 console.log("utils.computeDistributionNumbersForAllFeatures(inneMatrix)");
-console.log(utils.computeDistributionNumbersForAllFeatures(inneMatrix));
+//console.log(utils.computeDistributionNumbersForAllFeatures(inneMatrix));
 
 var bigMatrixProbabilityDistribution = utils.computeProbabilityDistribution(bigMatrixdistributionNumbers, utils.getNumberOfPatients(bigMatrix));
 console.log("bigMatrix[1].length: ", utils.getNumberOfPatients(bigMatrix));

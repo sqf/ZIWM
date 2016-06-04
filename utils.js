@@ -33,8 +33,9 @@ exports.computeDistributionNumbersForAllFeatures = function(matrix) {
 
 exports.computeProbabilityDistribution = function(distributionNumbers, numberOfPatients) {
     var probabilityDistribution = {};
-    for (var feature in distributionNumbers) {
-        probabilityDistribution[feature] = distributionNumbers[feature] / numberOfPatients;
+    for (var patient in distributionNumbers) {
+        console.log(patient);
+        probabilityDistribution[patient] = distributionNumbers[patient] / numberOfPatients;
     }
     return probabilityDistribution;
 }
