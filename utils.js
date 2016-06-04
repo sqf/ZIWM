@@ -15,12 +15,20 @@ exports.getPatientsMatrix = function(filePath) {
     return matrix;
 }
 
-exports.computeDistributionNumbers = function(featureArray) {
-    return featureArray.reduce(function(result, item) {
+function computeDistributionNumbers(featureArray) {
+    return featureArray.reduce(function (result, item) {
         result[item] || (result[item] = 0);
         result[item]++;
         return result;
     }, {});
+}
+
+exports.computeDistributionNumbersForAllFeatures = function(matrix) {
+    var distributionNumbersForAllFeatures = {};
+    for (var i = 0; i < matrix.length; i++) {
+        distributionNumbersForAllFeatures[i] = computeDistributionNumbers(matrix[i]);
+    }
+    return distributionNumbersForAllFeatures;
 }
 
 exports.computeProbabilityDistribution = function(distributionNumbers, numberOfPatients) {
@@ -47,3 +55,5 @@ exports.mergeMatrix = function(array1, array2) {
     }
     return mergedArray;
 }
+
+exports.computeDistributionNumbers = computeDistributionNumbers;

@@ -11,10 +11,14 @@ bigMatrix = utils.mergeMatrix(bigMatrix, mi_npMatrix);
 
 
 //console.log(utils.mergeMatrix(inneMatrix, ang_prectMatrix)[2][230]);
-console.log(bigMatrix[1]);
-var distributionNumbers = utils.computeDistributionNumbers(bigMatrix[1]);
+//console.log(bigMatrix[1]);
+var bigMatrixdistributionNumbers = utils.computeDistributionNumbers(bigMatrix[0]);
+console.log("inneMatrix.length", inneMatrix.length);
 
-var bigMatrixProbabilityDistribution = utils.computeProbabilityDistribution(distributionNumbers, utils.getNumberOfPatients(bigMatrix));
+console.log("utils.computeDistributionNumbersForAllFeatures(inneMatrix)");
+console.log(utils.computeDistributionNumbersForAllFeatures(inneMatrix));
+
+var bigMatrixProbabilityDistribution = utils.computeProbabilityDistribution(bigMatrixdistributionNumbers, utils.getNumberOfPatients(bigMatrix));
 console.log("bigMatrix[1].length: ", utils.getNumberOfPatients(bigMatrix));
 console.log("inneMatrix[1].length:", utils.getNumberOfPatients(inneMatrix));
 console.log("ang_prectMatrix[1].length: ", utils.getNumberOfPatients(ang_prectMatrix));
