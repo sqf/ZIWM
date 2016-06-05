@@ -84,9 +84,9 @@ exports.getNumberOfPatients = function(matrix) {
     return matrix[0].length;
 }
 
-function computePartOfKolmogorovScore(probabilityBigMatrixMinusSecondMatrix, numberOfPatients) {
+function computePartOfKolmogorovScore(probabilityBigMatrixMinusSecondMatrix, probabilityOfDiagnosis) {
     return probabilityBigMatrixMinusSecondMatrix.map(function (probability) {
-        return probability * numberOfPatients;
+        return probability * probabilityOfDiagnosis;
     });
 }
 

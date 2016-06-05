@@ -7,6 +7,7 @@ var mi_npMatrix = utils.getPatientsMatrix("mi_np.txt");
 
 var bigMatrix = JSON.parse(JSON.stringify(inneMatrix));
 bigMatrix = utils.mergeMatrix(bigMatrix, ang_prectMatrix);
+bigMatrix = utils.mergeMatrix(bigMatrix, ang_prct_2Matrix);
 bigMatrix = utils.mergeMatrix(bigMatrix, miMatrix);
 bigMatrix = utils.mergeMatrix(bigMatrix, mi_npMatrix);
 
@@ -22,7 +23,9 @@ var numberOfPatientsWithAng_prect = utils.getNumberOfPatients(ang_prectMatrix);
 var numberOfPatientsWithAng_prct_2 = utils.getNumberOfPatients(ang_prct_2Matrix);
 var numberOfPatientsWithMi = utils.getNumberOfPatients(miMatrix);
 var numberOfPatientsWithMi_np = utils.getNumberOfPatients(mi_npMatrix);
-var numberOfAllPatients = utils.getNumberOfPatients(bigMatrix)
+var numberOfAllPatients = utils.getNumberOfPatients(bigMatrix);
+
+console.log("numberOfAllPatients: ", numberOfAllPatients);
 
 var probabilityOfInne = numberOfPatientsWithInne / numberOfAllPatients;
 var probabilityOfAng_prect = numberOfPatientsWithAng_prect / numberOfAllPatients;
@@ -72,5 +75,7 @@ kolmogorovScoreList = utils.sumArrays(kolmogorovScoreList, ang_prct_2Matrix_prec
 kolmogorovScoreList = utils.sumArrays(kolmogorovScoreList, miMatrixPartOfKolmogorovScore);
 kolmogorovScoreList = utils.sumArrays(kolmogorovScoreList, mi_npPartOfKolmogorovScore);
 
-console.log("kolmogorovScoreList:")
-console.log(kolmogorovScoreList)
+console.log("kolmogorovScoreList:");
+kolmogorovScoreList.forEach(function (score) {
+    console.log(score);
+})
