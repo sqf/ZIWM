@@ -32,10 +32,22 @@ intentClassifier.trainBatch([
     {input: {I:1,want:1,chips:1}, output: "CHIPS"}
 ]);
 
-console.dir(intentClassifier.classify({I:1,want:1,an:1,apple:1,and:1,a:1,banana:1}));  // ['APPLE','BANANA']
-console.log(inneMatrix2[0].length);
-var janusz;
-console.log(generateInputForClassifier(inneMatrix2[0]));
+// console.dir(intentClassifier.classify({I:1,want:1,an:1,apple:1,and:1,a:1,banana:1}));  // ['APPLE','BANANA']
+// console.log(inneMatrix2[0].length);
+console.log("combineInputAndOutput inneMatrix2: ");
+console.log(combineInputAndOutputForClassifier(inneMatrix2, "pain of non-hear origin"));
+
+function combineInputAndOutputForClassifier(matrix, diseaseName) {
+    var combinedInputsAndOutputs = [];
+    matrix.forEach(function(patient) {
+        combinedInputsAndOutputs.push({
+            input: generateInputForClassifier(patient),
+            output: diseaseName
+        });
+    });
+    return combinedInputsAndOutputs;
+}
+//console.log(generateInputForClassifier(inneMatrix2[0]));
 function generateInputForClassifier(patient) {
 
     var inputForClassifier = {};
@@ -105,7 +117,7 @@ function generateInputold(patientsMatrix) {
         var patient = patientsMatrix[i];
         for(var j = 0; j < patient.length; j++) {
             //console.log(patient[j])
-            console.log(j)
+            //console.log(j)
         }
     }
     //patients[0].input.age = patientsMatrix
