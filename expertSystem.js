@@ -76,6 +76,31 @@ function generateInput(patient) {
     input.antacidsOrH2Blockers = patient[34];
     input.systolicBloodPresure = patient[35];
     input.diastolicBloodPressure = patient[36];
+    input.heartRate = patient[37];
+    input.respirationRate = patient[38];
+    input.rales = patient[39];
+    input.cyanosis = patient[40];
+    input.pallor = patient[41];
+    input.systolicMurmur = patient[42];
+    input.diastolicMurmur = patient[43];
+    input.oedma = patient[44];
+    input.s3Gallop = patient[45];
+    input.s4Gallop = patient[46];
+    input.chestWallTenderness = patient[47];
+    input.diaphoresis2 = patient[48];
+    input.newQWave = patient[49];
+    input.anyQWave = patient[50];
+    input.newStSegmentElevation = patient[51];
+    input.anyStSegmentElevation = patient[52];
+    input.newStSegmentDepression = patient[53];
+    input.anyStSegmentDepression = patient[54];
+    input.newTWaveInversion = patient[55];
+    input.anyTWaveInversion = patient[56];
+    input.newIntraventricularConductionDefect = patient[57];
+    input.anyIntraventricularConductionDefect = patient[58];
+
+
+
 
 
 
