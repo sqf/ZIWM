@@ -35,80 +35,70 @@ intentClassifier.trainBatch([
 console.dir(intentClassifier.classify({I:1,want:1,an:1,apple:1,and:1,a:1,banana:1}));  // ['APPLE','BANANA']
 console.log(inneMatrix2[0].length);
 var janusz;
-console.log = generateInput(inneMatrix2[0]);
-function generateInput(patient) {
+console.log(generateInputForClassifier(inneMatrix2[0]));
+function generateInputForClassifier(patient) {
 
-    var input;
-    input.age = patient[0];
-    input.sex = patient[1];
-    input.painLocation = patient[2];
-    input.chestPainRadiation = patient[3];
-    input.painCharacter = patient[4];
-    input.onsetOfPain = patient[5];
-    input.numberOfHoursSinceOnset = patient[6];
-    input.durationOfTheLastEpisode = patient[7];
-    input.Nausea = patient[8];
-    input.diaphoresis = patient[9];
-    input.palpitations = patient[10];
-    input.dyspnea = patient[11];
-    input.dizzinessOrSyncope = patient[12];
-    input.burping = patient[13];
-    input.palliativeFactors = patient[14];
-    input.priorChestPainOfThisType = patient[15];
-    input.physicianConsultedForPriorPain = patient[16];
-    input.priorPainRelatedToHeart = patient[17];
-    input.priorPainDueToMi = patient[18];
-    input.priorPainDueToAnginaPrectoris = patient[19];
-    input.priorMi = patient[20];
-    input.priorAnginaPrectoris = patient[21];
-    input.priorAtypicalChestPain = patient[22];
-    input.congestiveHeartFailure = patient[23];
-    input.peripheralVascularDisease = patient[24];
-    input.hiatalHernia = patient[25];
-    input.hypertension = patient[26];
-    input.diabetes = patient[27];
-    input.smoker = patient[28];
-    input.diuretics = patient[29];
-    input.nitrates = patient[30];
-    input.betaBlockers = patient[31];
-    input.digitalis = patient[32];
-    input.nonsteroidalAntiInflammatory = patient[33];
-    input.antacidsOrH2Blockers = patient[34];
-    input.systolicBloodPresure = patient[35];
-    input.diastolicBloodPressure = patient[36];
-    input.heartRate = patient[37];
-    input.respirationRate = patient[38];
-    input.rales = patient[39];
-    input.cyanosis = patient[40];
-    input.pallor = patient[41];
-    input.systolicMurmur = patient[42];
-    input.diastolicMurmur = patient[43];
-    input.oedma = patient[44];
-    input.s3Gallop = patient[45];
-    input.s4Gallop = patient[46];
-    input.chestWallTenderness = patient[47];
-    input.diaphoresis2 = patient[48];
-    input.newQWave = patient[49];
-    input.anyQWave = patient[50];
-    input.newStSegmentElevation = patient[51];
-    input.anyStSegmentElevation = patient[52];
-    input.newStSegmentDepression = patient[53];
-    input.anyStSegmentDepression = patient[54];
-    input.newTWaveInversion = patient[55];
-    input.anyTWaveInversion = patient[56];
-    input.newIntraventricularConductionDefect = patient[57];
-    input.anyIntraventricularConductionDefect = patient[58];
-
-
-
-
-
-
-
-
-
-
-    //patients[0].input.age = patientsMatrix
+    var inputForClassifier = {};
+    inputForClassifier.age = patient[0];
+    inputForClassifier.sex = patient[1];
+    inputForClassifier.painLocation = patient[2];
+    inputForClassifier.chestPainRadiation = patient[3];
+    inputForClassifier.painCharacter = patient[4];
+    inputForClassifier.onsetOfPain = patient[5];
+    inputForClassifier.numberOfHoursSinceOnset = patient[6];
+    inputForClassifier.durationOfTheLastEpisode = patient[7];
+    inputForClassifier.Nausea = patient[8];
+    inputForClassifier.diaphoresis = patient[9];
+    inputForClassifier.palpitations = patient[10];
+    inputForClassifier.dyspnea = patient[11];
+    inputForClassifier.dizzinessOrSyncope = patient[12];
+    inputForClassifier.burping = patient[13];
+    inputForClassifier.palliativeFactors = patient[14];
+    inputForClassifier.priorChestPainOfThisType = patient[15];
+    inputForClassifier.physicianConsultedForPriorPain = patient[16];
+    inputForClassifier.priorPainRelatedToHeart = patient[17];
+    inputForClassifier.priorPainDueToMi = patient[18];
+    inputForClassifier.priorPainDueToAnginaPrectoris = patient[19];
+    inputForClassifier.priorMi = patient[20];
+    inputForClassifier.priorAnginaPrectoris = patient[21];
+    inputForClassifier.priorAtypicalChestPain = patient[22];
+    inputForClassifier.congestiveHeartFailure = patient[23];
+    inputForClassifier.peripheralVascularDisease = patient[24];
+    inputForClassifier.hiatalHernia = patient[25];
+    inputForClassifier.hypertension = patient[26];
+    inputForClassifier.diabetes = patient[27];
+    inputForClassifier.smoker = patient[28];
+    inputForClassifier.diuretics = patient[29];
+    inputForClassifier.nitrates = patient[30];
+    inputForClassifier.betaBlockers = patient[31];
+    inputForClassifier.digitalis = patient[32];
+    inputForClassifier.nonsteroidalAntiInflammatory = patient[33];
+    inputForClassifier.antacidsOrH2Blockers = patient[34];
+    inputForClassifier.systolicBloodPresure = patient[35];
+    inputForClassifier.diastolicBloodPressure = patient[36];
+    inputForClassifier.heartRate = patient[37];
+    inputForClassifier.respirationRate = patient[38];
+    inputForClassifier.rales = patient[39];
+    inputForClassifier.cyanosis = patient[40];
+    inputForClassifier.pallor = patient[41];
+    inputForClassifier.systolicMurmur = patient[42];
+    inputForClassifier.diastolicMurmur = patient[43];
+    inputForClassifier.oedma = patient[44];
+    inputForClassifier.s3Gallop = patient[45];
+    inputForClassifier.s4Gallop = patient[46];
+    inputForClassifier.chestWallTenderness = patient[47];
+    inputForClassifier.diaphoresis2 = patient[48];
+    inputForClassifier.newQWave = patient[49];
+    inputForClassifier.anyQWave = patient[50];
+    inputForClassifier.newStSegmentElevation = patient[51];
+    inputForClassifier.anyStSegmentElevation = patient[52];
+    inputForClassifier.newStSegmentDepression = patient[53];
+    inputForClassifier.anyStSegmentDepression = patient[54];
+    inputForClassifier.newTWaveInversion = patient[55];
+    inputForClassifier.anyTWaveInversion = patient[56];
+    inputForClassifier.newIntraventricularConductionDefect = patient[57];
+    inputForClassifier.anyIntraventricularConductionDefect = patient[58];
+    return inputForClassifier;
 }
 function generateInputold(patientsMatrix) {
     for(var i = 0; i < patientsMatrix.length; i++) {
