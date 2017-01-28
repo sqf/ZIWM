@@ -7,9 +7,9 @@ var ang_prct_2Matrix = utils.getPatientsMatrix("ang_prct_2.txt");
 var miMatrix = utils.getPatientsMatrix("mi.txt");
 var mi_npMatrix = utils.getPatientsMatrix("mi_np.txt");
 
-var inneMatrix2 = inneMatrix[0].map(function(col, i) {
+var transposedInneMatrix = inneMatrix[0].map(function(col, i) {
     return inneMatrix.map(function(row) {
-        return row[i]
+        return parseFloat(row[i])
     })
 });
 
@@ -26,16 +26,10 @@ var intentClassifier = new limdu.classifiers.multilabel.BinaryRelevance({
     binaryClassifierType: MyWinnow
 });
 
-intentClassifier.trainBatch([
-    {input: {I:1,want:1,an:1,apple:1}, output: "APPLE"},
-    {input: {I:1,want:1,a:1,banana:1}, output: "BANANA"},
-    {input: {I:1,want:1,chips:1}, output: "CHIPS"}
-]);
-
-// console.dir(intentClassifier.classify({I:1,want:1,an:1,apple:1,and:1,a:1,banana:1}));  // ['APPLE','BANANA']
-// console.log(inneMatrix2[0].length);
-console.log("combineInputAndOutput inneMatrix2: ");
-console.log(combineInputAndOutputForClassifier(inneMatrix2, "pain of non-hear origin"));
+intentClassifier.trainBatch(
+    combineInputAndOutputForClassifier(transposedInneMatrix, "painOfNonHeartOrigin")
+);
+console.dir(intentClassifier.classify(generateInputForClassifier(transposedInneMatrix[55])));  // ['painOfNonHeartOrigin']
 
 function combineInputAndOutputForClassifier(matrix, diseaseName) {
     var combinedInputsAndOutputs = [];
@@ -47,7 +41,7 @@ function combineInputAndOutputForClassifier(matrix, diseaseName) {
     });
     return combinedInputsAndOutputs;
 }
-//console.log(generateInputForClassifier(inneMatrix2[0]));
+
 function generateInputForClassifier(patient) {
 
     var inputForClassifier = {};
@@ -111,14 +105,4 @@ function generateInputForClassifier(patient) {
     inputForClassifier.newIntraventricularConductionDefect = patient[57];
     inputForClassifier.anyIntraventricularConductionDefect = patient[58];
     return inputForClassifier;
-}
-function generateInputold(patientsMatrix) {
-    for(var i = 0; i < patientsMatrix.length; i++) {
-        var patient = patientsMatrix[i];
-        for(var j = 0; j < patient.length; j++) {
-            //console.log(patient[j])
-            //console.log(j)
-        }
-    }
-    //patients[0].input.age = patientsMatrix
 }
