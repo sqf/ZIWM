@@ -1,46 +1,54 @@
 var utils = require("./utils.js");
+var _ = require("underscore");
+var brain = require('brain');
 
-var limdu = require('limdu');
+var netFromFile = require('./net');
 var inneMatrix = utils.getPatientsMatrix("inne.txt");
 var ang_prectMatrix = utils.getPatientsMatrix("ang_prect.txt");
 var ang_prct_2Matrix = utils.getPatientsMatrix("ang_prct_2.txt");
 var miMatrix = utils.getPatientsMatrix("mi.txt");
 var mi_npMatrix = utils.getPatientsMatrix("mi_np.txt");
 
-var transposedInneMatrix = inneMatrix[0].map(function(col, i) {
-    return inneMatrix.map(function(row) {
-        return parseFloat(row[i])
-    })
-});
+var transposedInneMatrix = utils.transpondMatrix(inneMatrix);
+var transponedAng_prectMatrix = utils.transpondMatrix(ang_prectMatrix);
+var transposedAng_prct_2Matrix = utils.transpondMatrix(ang_prct_2Matrix);
+var transposedMiMatrix = utils.transpondMatrix(miMatrix);
+var transposedMi_npMatrix = utils.transpondMatrix(mi_npMatrix);
 
-var bigMatrix = JSON.parse(JSON.stringify(inneMatrix));
-bigMatrix = utils.mergeMatrix(bigMatrix, ang_prectMatrix);
-bigMatrix = utils.mergeMatrix(bigMatrix, ang_prct_2Matrix);
-bigMatrix = utils.mergeMatrix(bigMatrix, miMatrix);
-bigMatrix = utils.mergeMatrix(bigMatrix, mi_npMatrix);
+var net = new brain.NeuralNetwork();
 
+// var inputAndOutputForClassifier = [];
+// inputAndOutputForClassifier = inputAndOutputForClassifier.concat(combineInputAndOutputForClassifier(transposedInneMatrix, "Pain of non-heart origin"),
+//     combineInputAndOutputForClassifier(transponedAng_prectMatrix, "Angina prectoris"),
+//     combineInputAndOutputForClassifier(transposedAng_prct_2Matrix, "Angina prectoris - Prinzmetal variant"),
+//     combineInputAndOutputForClassifier(transposedMiMatrix, "Myocardial infraction (transmural)"),
+//     combineInputAndOutputForClassifier(transposedMi_npMatrix, "Myocardial infraction (subendocardial)"));
 
-var MyWinnow = limdu.classifiers.Winnow.bind(0, {retrain_count: 10});
+// function combineInputAndOutputForClassifier(matrix, diseaseName) {
+//     var combinedInputsAndOutputs = [];
+//     matrix.forEach(function(patient) {
+//         var combinedInputAndOutput = {};
+//         combinedInputAndOutput["input"] = generateInputForClassifier(patient);
+//         var output = {};
+//         output[diseaseName] = 1;
+//         combinedInputAndOutput["output"] = output;
+//         combinedInputsAndOutputs.push(combinedInputAndOutput);
+//     });
+//     return combinedInputsAndOutputs;
+// }
 
-var intentClassifier = new limdu.classifiers.multilabel.BinaryRelevance({
-    binaryClassifierType: MyWinnow
-});
+// net.train(
+//     inputAndOutputForClassifier
+// );
+// var json = net.toJSON();
+// var fs = require('fs');
+// fs.writeFile("net.json", JSON.stringify(json), function(err) {
+//     if(err) {
+//         return console.log(err);
+//     }
+// });
 
-intentClassifier.trainBatch(
-    combineInputAndOutputForClassifier(transposedInneMatrix, "painOfNonHeartOrigin")
-);
-console.dir(intentClassifier.classify(generateInputForClassifier(transposedInneMatrix[55])));  // ['painOfNonHeartOrigin']
-
-function combineInputAndOutputForClassifier(matrix, diseaseName) {
-    var combinedInputsAndOutputs = [];
-    matrix.forEach(function(patient) {
-        combinedInputsAndOutputs.push({
-            input: generateInputForClassifier(patient),
-            output: diseaseName
-        });
-    });
-    return combinedInputsAndOutputs;
-}
+console.log(net.fromJSON(netFromFile).run(generateInputForClassifier(transposedMi_npMatrix[50]), 4)); // example
 
 function generateInputForClassifier(patient) {
 

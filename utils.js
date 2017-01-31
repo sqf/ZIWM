@@ -116,6 +116,27 @@ exports.mergeMatrix = function(array1, array2) {
     return mergedArray;
 }
 
+exports.addNumbersToArray = function(array) {
+    var length = array.length;
+    var arrayWithNumbers = {};
+
+    for(var i = 0; i < length; i++) {
+        console.log(i)
+        arrayWithNumbers[i][0] = array[i]
+        arrayWithNumbers[i][1] = i;
+    }
+    return arrayWithNumbers;
+}
+
+function transpondMatrix(matrix) {
+    return matrix[0].map(function(col, i) {
+        return matrix.map(function(row) {
+            return parseFloat(row[i])
+        })
+    })
+}
+
+exports.transpondMatrix = transpondMatrix;
 exports.computeDistributionNumbers = computeDistributionNumbers;
 exports.computeProbabilityDistribution = computeProbabilityDistribution;
 exports.computePartOfKolmogorovScore = computePartOfKolmogorovScore;
